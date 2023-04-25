@@ -5,10 +5,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faUpload } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
-
+//add imports
+import { useGetTodosQuery } from '../api/apiSlice'
+import Spinner from '../../components/spinner/Spinner'
 const TodoList = () => {
 
     const [newTodo, setNewTodo] = useState('')
+    const {
+        data: todos,
+        isLoading,
+        isSuccess,
+        isError,
+        error,
+    } = useGetTodosQuery();
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,6 +38,13 @@ const TodoList = () => {
 
     //define conditional content
     let content;
+    if (isLoading) {
+        content = <Spinner/>
+    } else if (isSuccess) {
+        content = JSON.stringify(todos)
+    } else if (isError) {
+        content = <div className="error">{error}</div>
+    }
     return (
         <main>
             <h1>To do list</h1>
