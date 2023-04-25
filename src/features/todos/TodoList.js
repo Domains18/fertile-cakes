@@ -6,7 +6,7 @@ import { faTrash, faUpload } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
 //add imports
-import { useGetTodosQuery } from '../api/apiSlice'
+import { useGetTodosQuery,  useAddTodoMutation, useUpdateTodoMutation, useDeleteTodoMutation } from '../api/apiSlice'
 import Spinner from '../../components/spinner/Spinner'
 const TodoList = () => {
 
@@ -18,6 +18,9 @@ const TodoList = () => {
         isError,
         error,
     } = useGetTodosQuery();
+    const [addTodo] = useAddTodoMutation();
+    const [updateTodo] = useUpdateTodoMutation();
+    const [deleteTodo] = useDeleteTodoMutation();
 
 
 

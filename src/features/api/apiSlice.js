@@ -7,7 +7,7 @@ export const apiSlice = createApi({
         getTodos: builder.query({
             query: () => '/todos',
         }),
-        //add todo
+        //add todo 
         addTodo: builder.mutation({
             query: (todo) => ({
                 url: '/todos',
