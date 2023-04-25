@@ -48,6 +48,7 @@ const TodoList = () => {
     return (
         <main>
             <h1>To do list</h1>
+            {/* <Spinner/> */}
             {newItemSection}
             {content}
         </main>
